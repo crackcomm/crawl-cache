@@ -1,6 +1,6 @@
 # crawl-cache
 
-+[![Circle CI](https://img.shields.io/circleci/project/crackcomm/crawl-cache.svg)](https://circleci.com/gh/crackcomm/crawl-cache)
+[![Circle CI](https://img.shields.io/circleci/project/crackcomm/crawl-cache.svg)](https://circleci.com/gh/crackcomm/crawl-cache)
 
 NSQ crawl queue interceptor caching requests.
 
