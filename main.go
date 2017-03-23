@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/golang/glog"
 	"github.com/urfave/cli"
@@ -102,6 +103,12 @@ var flags = []cli.Flag{
 		Usage:  "cache path on disk (required)",
 		Value:  "/tmp/crawl-cache",
 	},
+	cli.DurationFlag{
+		Name:   "cache-ttl",
+		EnvVar: "CACHE_ttl",
+		Usage:  "cache ttl",
+		Value:  time.Hour * 24 * 30,
+	},
 }
 
 func appMain(c *cli.Context) error {
@@ -109,7 +116,7 @@ func appMain(c *cli.Context) error {
 	flag.CommandLine.Parse([]string{"-logtostderr", fmt.Sprintf("-v=%d", c.Int("verbosity"))})
 
 	// Open LevelDB cache
-	ch, err := leveldb.Open(c.String("cache-path"))
+	ch, err := leveldb.Open(c.String("cache-path"), c.Duration("cache-ttl"))
 	if err != nil {
 		return err
 	}
