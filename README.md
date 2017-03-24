@@ -4,6 +4,8 @@
 
 NSQ crawl queue interceptor caching requests.
 
+Ignores `http://`, `https://`, `www.` prefixes.
+
 ## Usage
 
 Example usage from command line:
